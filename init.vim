@@ -5,15 +5,17 @@ let g:mapleader="\<space>"
 let g:maplocalleader='\'
 
 " Setup plugin manager
-let g:plug_file = expand('$XDG_CONFIG_HOME/nvim/autoload/plug.vim')
+let g:plug_file = expand('$XDG_DATA_HOME/nvim/site/autoload/plug.vim')
+let g:plug_dir = expand('$XDG_DATA_HOME/nvim/plugged')
 
-" TODO: Figure out why this breaks nvim-qt
-"if !filereadable(g:plug_file)
-"  exec '!curl -fLo '.g:plug_file.' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-"endif
+" TODO: Figure out why this breaks nvim-qt on windows
+if !filereadable(g:plug_file)
+  exec '!curl -fLo '.g:plug_file.' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  runtime 'plug.vim'
+endif
 
 " Configure plugins
-call plug#begin('~/.local/share/nvim/plugged')
+call plug#begin(g:plug_dir)
 
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-fugitive'
@@ -30,7 +32,7 @@ call plug#end()
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 let g:deoplete#sources#clang#autofill_neomake = 1
-let g:neomake_logfile = expand('$XDG_RUNTIME_DIR/logs/neomake.log')
+let g:neomake_logfile = '/tmp/neomake.log'
 let g:neomake_cpp_enabled_makers = ["clang"]
 
 let g:deoplete#enabled_at_startup = 1
@@ -70,13 +72,13 @@ let g:fzf_colors = {
   \ 'header':  ['fg', 'Comment'] }
 
 
-"set hidden
+" set hidden
 "let g:LanguageClient_serverCommands = {
 "    \ 'cpp': ['cquery.exe', '--language-server']
 "    \ }
-"let g:LanguageClient_trace = messages
-"let g:LanguageClient_windowLogMessageLevel = Info
-"let g:LanguageClient_loggingLevel = DEBUG
+"let g:LanguageClient_trace = 'messages'
+"let g:LanguageClient_windowLogMessageLevel = 'Info'
+"let g:LanguageClient_loggingLevel = 'DEBUG'
 
 "nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 "nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
@@ -86,9 +88,6 @@ set statusline=%<%f%h%m%r%w%=%y\ %{fugitive#statusline()}%=%b\ 0x%B\ \ %l,%c%V\ 
 set cmdheight=2
 
 " Development 
-" Python 
-"let g:python_host_prog = 'c:\Python27\python.exe'
-"let g:python3_host_prog = 'c:\Python36\python.exe'
  
 " Spaces & Tabs 
 set tabstop=4		    " 4 space tabs
