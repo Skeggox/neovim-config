@@ -15,13 +15,13 @@ if !has('nvim')
     source $XDG_CONFIG_HOME/nvim/init/vim.vim
 endif
 
-set cmdheight=2
+syntax on
 
-" Development 
-" Python 
-"let g:python_host_prog = 'c:\Python27\python.exe'
-"let g:python3_host_prog = 'c:\Python36\python.exe'
- 
+set hidden
+set cmdheight=2
+set updatetime=300
+set signcolumn=yes
+
 " Spaces & Tabs 
 set tabstop=4		    " 4 space tabs
 set softtabstop=4
@@ -44,6 +44,8 @@ set foldnestmax=10	    " Max of 10 folds
 set foldenable		    " Don't fold files by default on open
 set foldlevelstart=10	" start with a fold level of 1?
 
+" Development 
+ 
 " Remap Shortcuts 
  
 "nnoremap <expr> j v:count ? 'j' : 'gj'
