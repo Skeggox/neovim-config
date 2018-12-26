@@ -1,94 +1,33 @@
 " Jan Lotz
 scriptencoding utf-8
 
-let g:mapleader="\<space>"
+let g:mapleader='\<space>'
 let g:maplocalleader='\'
 
-" Setup plugin manager
-let g:plug_file = expand('$XDG_DATA_HOME/nvim/site/autoload/plug.vim')
-let g:plug_dir = expand('$XDG_DATA_HOME/nvim/plugged')
-
-" TODO: Figure out why this breaks nvim-qt on windows
-if !filereadable(g:plug_file)
-  exec '!curl -fLo '.g:plug_file.' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  runtime 'plug.vim'
+if executable('git')
+    source $XDG_CONFIG_HOME/nvim/init/plugins.vim
+else
+    set statusline=%<%f%h%m%r%w%=%y%=%b\ 0x%B\ \ %l,%c%V\ %P
 endif
 
-" Configure plugins
-call plug#begin(g:plug_dir)
+" Vim-specific 
+if !has('nvim')
+    source $XDG_CONFIG_HOME/nvim/init/vim.vim
+endif
 
-Plug 'editorconfig/editorconfig-vim'
-Plug 'tpope/vim-fugitive'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/neoinclude.vim'
-Plug 'neomake/neomake'
-" Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'install.ps1' }
-Plug 'tweekmonster/deoplete-clang2'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
+" Keyboard: this assumes you have a multi-media keyboard (like Logitech K350) and used showkey to
+" create a unique keyboard map
 
-call plug#end()
+" Music
+noremap <C-Space> :silent !mpc -q toggle<CR> 
 
-let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+syntax on
 
-let g:deoplete#sources#clang#autofill_neomake = 1
-let g:neomake_logfile = '/tmp/neomake.log'
-let g:neomake_cpp_enabled_makers = ["clang"]
-
-let g:deoplete#enabled_at_startup = 1
-
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
-
-"" fzf
-
-nnoremap <leader>b :Buffers<cr>
-nnoremap <leader>c :History:<cr>
-nnoremap <leader>f :Files<cr>
-nnoremap <leader>g :GFiles<cr>
-nnoremap <leader>h :History<cr>
-nnoremap <leader>l :Lines<cr>
-nnoremap <leader>m :Maps<cr>
-nnoremap <leader>r :Ag<cr>
-
-" fzf-vim
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-s': 'split',
-  \ 'ctrl-v': 'vsplit' }
-let g:fzf_colors = {
-  \ 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'Type'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Character'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
-
-
-" set hidden
-"let g:LanguageClient_serverCommands = {
-"    \ 'cpp': ['cquery.exe', '--language-server']
-"    \ }
-"let g:LanguageClient_trace = 'messages'
-"let g:LanguageClient_windowLogMessageLevel = 'Info'
-"let g:LanguageClient_loggingLevel = 'DEBUG'
-
-"nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-"nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-"nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
-
-set statusline=%<%f%h%m%r%w%=%y\ %{fugitive#statusline()}%=%b\ 0x%B\ \ %l,%c%V\ %P
+set hidden
 set cmdheight=2
+set updatetime=300
+set signcolumn=yes
 
-" Development 
- 
 " Spaces & Tabs 
 set tabstop=4		    " 4 space tabs
 set softtabstop=4
@@ -111,6 +50,8 @@ set foldnestmax=10	    " Max of 10 folds
 set foldenable		    " Don't fold files by default on open
 set foldlevelstart=10	" start with a fold level of 1?
 
+" Development 
+ 
 " Remap Shortcuts 
  
 "nnoremap <expr> j v:count ? 'j' : 'gj'
@@ -133,9 +74,5 @@ nnoremap <leader>json :%!jjson --vim-plugin-mode -i 4 -f %<cr>
 " 
 " Backups 
 " set backupskip=/tmp/*,/private/tmp/*
-" 
-" Vim-specific 
-if !has('nvim')
-    source "$XDG_CONFIG_HOME/nvim/init/vim.vim"
-endif
+ 
 
