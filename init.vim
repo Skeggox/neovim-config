@@ -19,7 +19,7 @@ endif
 " create a unique keyboard map
 
 " Music
-noremap <C-Space> :silent !mpc -q toggle<CR> 
+" noremap <C-Space> :silent !mpc -q toggle<CR> 
 
 syntax on
 
