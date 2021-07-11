@@ -1,0 +1,17 @@
+{
+  "languageserver": {
+      "ccls": {
+          "command": "ccls",
+          "args": ["-log-file=/tmp/ccls.log", "-v=5"],
+          "filetypes": ["cuda", "objc", "objcpp"],
+          "rootPatterns": [".ccls", ".ccls-root", ".vim", ".git", ".svn"],
+          "initializationOptions": {
+            "cache": {
+              "directory": "/tmp/cache/ccls"
+            },
+            "highlight": { "lsRanges" : true },
+            "compilationDatabaseDirectory": "build"
+          }
+    }
+  }
+}
