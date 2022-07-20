@@ -22,6 +22,9 @@ endif
 " Setup providers
 " let g:node_host_prog = '/usr/lib/node_modules/neovim/bin/cli.js'
 
+" let g:python_host_prog = '/usr/bin/python2'
+let g:python3_host_prog = '/usr/bin/python'
+
 " Keyboard: this assumes you have a multi-media keyboard (like Logitech K350) and used showkey to
 " create a unique keyboard map
 
@@ -118,6 +121,11 @@ nnoremap Y y$
 
 nnoremap <C-Right> :cnext<cr>
 nnoremap <C-Left> :cprev<cr>
+
+" Motion shortcuts
+" TODO: Checkout searchpair()
+noremap ]] <Cmd>call search('[([{<]')<CR>
+
 
 " Leader Shortcuts
 nnoremap <leader>sv :source $MYVIMRC<cr>

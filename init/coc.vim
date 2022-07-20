@@ -67,9 +67,14 @@ nmap <leader>qf  <Plug>(coc-fix-current)
 " Create mappings for function text object, requires document symbols feature
 " of languageserver.
 xmap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
 omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
 omap af <Plug>(coc-funcobj-a)
+
+xmap ic <Plug>(coc-classcobj-i)
+omap ic <Plug>(coc-classcobj-i)
+xmap ac <Plug>(coc-classcobj-a)
+omap ac <Plug>(coc-classcobj-a)
 
 " Use <C-d> for select selections ranges, needs server support, like:
 " coc-tsserver, coc-python
@@ -136,3 +141,5 @@ fun! s:switchBetweenHeaderAndImplementation()
     endif
 endf
 nnoremap <silent> <leader>o :call <SID>switchBetweenHeaderAndImplementation()<CR>
+
+let g:projectionist_heuristics = { "*.c|*.h": {"make": "make -C {project}/build"} }

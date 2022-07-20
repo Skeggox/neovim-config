@@ -11,7 +11,7 @@ nnoremap <leader>zg :GFiles<cr>
 nnoremap <leader>zh :History<cr>
 nnoremap <leader>zl :Lines<cr>
 nnoremap <leader>zm :Maps<cr>
-nnoremap <leader>zr :Ag<cr>
+nnoremap <leader>zr :Rg<cr>
 
 "" fzf-vim
 let g:fzf_action = {

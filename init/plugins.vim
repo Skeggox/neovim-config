@@ -27,6 +27,8 @@ Plug 'vim-scripts/CRefVim'
 
 Plug 'tpope/vim-projectionist'
 
+Plug 'purofle/vim-mindustry-logic'
+
 "Plug 'tpope/sensible'
 "Plug 'tpope/sleuth.vim'
 "Plug 'tpope/vim-commentary'
