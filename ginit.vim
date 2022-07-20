@@ -9,10 +9,10 @@ if (has("termguicolors"))
 endif
 
 let g:rehash256 = 1
-colorscheme molokai
+colorscheme NeoSolarize
 
 " Guifont DejaVuSansMonoForPowerline\ NF:h12
-GuiFont Hack:h12
+GuiFont Hack:h15
 
 " Menu
-"set guioptions+=M
+set guioptions+=M
