@@ -13,6 +13,8 @@ nnoremap <leader>zl :Lines<cr>
 nnoremap <leader>zm :Maps<cr>
 nnoremap <leader>zr :Rg<cr>
 
+nnoremap <expr> <C-d> ':Rg '.expand('<cword>').'<cr>'
+
 "" fzf-vim
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
