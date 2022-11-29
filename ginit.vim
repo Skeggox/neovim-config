@@ -9,7 +9,7 @@ if (has("termguicolors"))
 endif
 
 let g:rehash256 = 1
-colorscheme NeoSolarize
+colorscheme NeoSolarized
 
 " Guifont DejaVuSansMonoForPowerline\ NF:h12
 GuiFont Hack:h15

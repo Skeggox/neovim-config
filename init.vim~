@@ -1,9 +1,8 @@
 " Jan Lotz
 scriptencoding utf-8
 
-" let g:mapleader='\<space>'
-" let g:maplocalleader='\'
-nmap <Space> <leader>
+let g:mapleader='\<space>'
+let g:maplocalleader='\'
 
 let $CONFIG_DIR=stdpath("config")
 let $DATA_DIR=stdpath("data")
@@ -25,12 +24,6 @@ endif
 " let g:python_host_prog = '/usr/bin/python2'
 let g:python3_host_prog = '/usr/bin/python'
 
-" Keyboard: this assumes you have a multi-media keyboard (like Logitech K350) and used showkey to
-" create a unique keyboard map
-
-" Music
-" noremap <C-Space> :silent !mpc -q toggle<CR>
-
 syntax on
 
 " if hidden is not set, TextEdit might fail.
@@ -45,9 +38,6 @@ set cmdheight=2
 
 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
-
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
 
 " always show signcolumns
 set signcolumn=yes
@@ -103,11 +93,6 @@ nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
-" Save and Quit shortcuts
-noremap <leader>q :q<cr>
-nnoremap <leader>s :w<cr>
-inoremap <leader>s <C-c>:w<cr>
-
 " Terminal mode
 tnoremap <Esc> <C-\><C-n>
 au BufEnter * if &buftype == 'terminal' | :startinsert | endif
@@ -122,18 +107,8 @@ nnoremap Y y$
 nnoremap <C-Right> :cnext<cr>
 nnoremap <C-Left> :cprev<cr>
 
-" Motion shortcuts
-" TODO: Checkout searchpair()
-noremap ]] <Cmd>call search('[([{<]')<CR>
-
-
 " Leader Shortcuts
-nnoremap <leader>sv :source $MYVIMRC<cr>
-nnoremap <leader>y "+y
-nnoremap <leader>p "+p
-nnoremap <leader>json :%!jjson --vim-plugin-mode -i 4 -f %<cr>
 nnoremap <leader>m :make<CR>
-nnoremap <silent> <C-X> :close<CR>
 
 autocmd FileType c,cpp,python autocmd BufWritePre <buffer> %s/\s\+$//e
 
